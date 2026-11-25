@@ -159,8 +159,7 @@ p{margin:0}
 .dane small{display:block;font-weight:500;font-size:14px;color:var(--sz)}
 .mapa{margin-top:30px;aspect-ratio:16/10;background:#e2e4e6;position:relative}
 .mapa iframe{border:0;width:100%;height:100%}
-.mapa-zgoda{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:20px}
-.mapa-zgoda p{color:var(--sz);font-size:15px;font-weight:600}
+
 form{background:#fff;padding:36px;display:grid;grid-template-columns:1fr 1fr;gap:18px;align-content:start}
 form h3{grid-column:1/-1;font-size:24px}
 form .cala{grid-column:1/-1}
@@ -412,7 +411,7 @@ textarea{min-height:130px;resize:vertical}
     <a href="mailto:biuro@xmeb.pl"><svg><use href="#i-mail"/></svg><span>biuro@xmeb.pl<small>możesz dołączyć rzut lub zdjęcia</small></span></a>
     <div><svg><use href="#i-pin"/></svg><span>ul. Wyszyńskiego 107B, 39-100 Ropczyce<small>siedziba firmy</small></span></div>
    </div>
-   <div class="mapa" id="mapa" data-src="https://www.google.com/maps?q=Wyszy%C5%84skiego+107B,+39-100+Ropczyce&amp;output=embed"><div class="mapa-zgoda"><p>Mapa Google zapisuje pliki cookies</p><button type="button" class="btn btn-zl" id="mapa-btn">Pokaż mapę</button></div></div>
+   <div class="mapa" id="mapa"><iframe src="https://www.google.com/maps?q=Wyszy%C5%84skiego+107B,+39-100+Ropczyce&amp;output=embed" title="Mapa dojazdu do Xmeb w Ropczycach" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
   </div>
   <form id="form" novalidate>
    <h3>Zapytanie o meble</h3>
@@ -461,11 +460,6 @@ document.addEventListener('DOMContentLoaded',function(){
  window.addEventListener('mouseup',function(){if(!d)return;d=false;g.style.scrollSnapType='';var w=g.clientWidth+16;g.scrollTo({left:Math.round(g.scrollLeft/w)*w,behavior:'smooth'})});
  g.addEventListener('mousemove',function(e){if(d){e.preventDefault();g.scrollLeft=sl-(e.pageX-sx)}});
  g.querySelectorAll('img').forEach(function(i){i.draggable=false});
- var mp=document.getElementById('mapa');
- function mapa(){var f=document.createElement('iframe');f.src=mp.dataset.src;f.title='Mapa dojazdu do Xmeb w Ropczycach';f.loading='lazy';f.referrerPolicy='no-referrer-when-downgrade';mp.innerHTML='';mp.appendChild(f)}
- var zg=null;try{zg=localStorage.getItem('xmeb-mapa')}catch(e){}
- if(zg==='1')mapa();
- document.getElementById('mapa-btn').addEventListener('click',function(){try{localStorage.setItem('xmeb-mapa','1')}catch(e){}mapa()});
  document.getElementById('form').addEventListener('submit',function(e){e.preventDefault();document.getElementById('form-info').textContent='To podgląd strony - formularz pokazowy, nic nie zostało wysłane.'});
 });
 </script>
